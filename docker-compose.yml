@@ -1,5 +1,9 @@
 version: '3.9'
 
+networks:
+  web:
+    external: true
+
 services:
   django:
     build: .
@@ -29,7 +33,3 @@ services:
     networks:
       - internal
       - web
-
-networks:
-  web:
-    external: true
