@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+  django:
+    build: .
+    container_name: mycompany_django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.django.rule=Host(`easy-platform.cloud/`)"
+      - "traefik.http.services.django.loadbalancer.server.port=8000"
+    networks:
+      - web
+
+  traefik:
+    image: traefik:v2.9
+    container_name: mycompany_traefik
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
