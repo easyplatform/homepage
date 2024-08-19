@@ -6,9 +6,9 @@ services:
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.mydnschallenge.acme.httpchallenge.entrypoint=websecure"
-      - "--certificatesresolvers.mydnschallenge.acme.email=d.richter@easy-platform.de"
-      - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myhttpchallenge.acme.httpchallenge.entrypoint=websecure"
+      - "--certificatesresolvers.myhttpchallenge.acme.email=d.richter@easy-platform.de"
+      - "--certificatesresolvers.myhttpchallenge.acme.storage=/letsencrypt/acme.json"
     ports:
       - "443:443"  # HTTPS
       - "8080:8080" # Traefik Dashboard

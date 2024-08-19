@@ -6,7 +6,7 @@ entryPoints:
     address: ":443"
     http:
       tls:
-        certResolver: mydnschallenge
+        certResolver: myhttpchallenge
         domains:
           - main: "easy-platform.cloud"
             sans:
@@ -18,11 +18,11 @@ providers:
     exposedByDefault: false
 
 certificatesResolvers:
-  mydnschallenge:
+  myhttpchallenge:
     acme:
       email: "d.richter@easy-platform.de"
       storage: "/letsencrypt/acme.json"
-       httpChallenge:
+      httpChallenge:
         entryPoint: websecure
 
 log:
