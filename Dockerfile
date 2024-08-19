@@ -22,4 +22,4 @@ WORKDIR /app/mycompany
 RUN python manage.py collectstatic --noinput
 
 # Command to run the application
-#CMD ["gunicorn", "--bind", "0.0.0.0:8000", "mycompany.wsgi:application"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "mycompany.wsgi:application"]
