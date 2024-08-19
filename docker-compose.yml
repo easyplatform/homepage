@@ -9,7 +9,7 @@ services:
       - .:/app
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.django.rule=Host(`easy-platform.cloud/`)"
+      - "traefik.http.routers.django.rule=Host(`easy-platform.cloud`)"
       - "traefik.http.services.django.loadbalancer.server.port=8000"
     networks:
       - web
