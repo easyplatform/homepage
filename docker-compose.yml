@@ -17,19 +17,3 @@ services:
       - "traefik.http.services.django.loadbalancer.server.port=8000"
     networks:
       - internal
-
-  traefik:
-    image: traefik:v2.9
-    container_name: mycompany_traefik
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-    networks:
-      - internal
-      - web
