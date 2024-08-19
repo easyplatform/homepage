@@ -6,8 +6,7 @@ services:
       - "--api.dashboard=true"
       - "--providers.docker=true"
       - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge=true"
-      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.mydnschallenge.acme.httpchallenge.entrypoint=websecure"
       - "--certificatesresolvers.mydnschallenge.acme.email=d.richter@easy-platform.de"
       - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
     ports:

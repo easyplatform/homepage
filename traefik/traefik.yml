@@ -22,9 +22,8 @@ certificatesResolvers:
     acme:
       email: "d.richter@easy-platform.de"
       storage: "/letsencrypt/acme.json"
-      dnsChallenge:
-        provider: cloudflare
-        delayBeforeCheck: 0
+       httpChallenge:
+        entryPoint: websecure
 
 log:
   level: DEBUG
