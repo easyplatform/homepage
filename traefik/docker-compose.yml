@@ -15,7 +15,7 @@ services:
       - 8080:8080 # Dashbaord WebGui 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro # Docker socket to watch for Traefik
-      - ./traefik.yml:/traefik.yml:ro # Traefik config file
+      - ./traefik.yml:./traefik.yml:ro # Traefik config file
       - traefik-certs:/certs # Docker volume to store the acme file for the Certifactes
 volumes:
   traefik-certs:
