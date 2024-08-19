@@ -2,24 +2,23 @@ services:
   traefik:
     image: traefik:v3.1
     container_name: traefik
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
-    environment:
-      - TZ=Europe/Amsterdam # Change this to your timezone
+    command:
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge=true"
+      - "--certificatesresolvers.mydnschallenge.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.mydnschallenge.acme.email=youremail@example.com"
+      - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "443:443"  # HTTPS
+      - "8080:8080" # Traefik Dashboard
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./letsencrypt:/letsencrypt"
     networks:
       - frontend
-    ports:
-      - 80:80 # HTTP entryPoints
-      - 443:443 # HTTPS entryPoints
-      - 8080:8080 # Dashbaord WebGui 
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro # Docker socket to watch for Traefik
-      - ./traefik.yml:./traefik.yml:ro # Traefik config file
-      - traefik-certs:/certs # Docker volume to store the acme file for the Certifactes
-volumes:
-  traefik-certs:
-    name: traefik-certs
 
 networks:
   frontend:
