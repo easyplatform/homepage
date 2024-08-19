@@ -38,9 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
-    'fluent_blogs',  # Add django-fluent-blogs
-    'fluent_comments',
-    'crispy_forms',
     'django.contrib.sites',
 ]
 
