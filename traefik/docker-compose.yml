@@ -8,7 +8,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.mydnschallenge.acme.dnschallenge=true"
       - "--certificatesresolvers.mydnschallenge.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesresolvers.mydnschallenge.acme.email=youremail@example.com"
+      - "--certificatesresolvers.mydnschallenge.acme.email=d.richter@easy-platform.de"
       - "--certificatesresolvers.mydnschallenge.acme.storage=/letsencrypt/acme.json"
     ports:
       - "443:443"  # HTTPS
